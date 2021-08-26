@@ -1,2 +1,2 @@
 # nodejs-movie-api
-Node js Movie API
+Node js Movie APIs
