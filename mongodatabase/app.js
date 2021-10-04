@@ -14,6 +14,14 @@ const {mongo} = require("mongoose");
 
 const app = express();
 
+// CONFIG 
+const config = require('./config');
+app.set('api_secret_key', config.api_secret_key);
+
+
+//Middleware
+const verifyToken = require('./middleware/verify-token');
+
 mongoose.connect('mongodb://localhost/movieApi');
 mongoose.connection.on('open', () => {
     console.log('MongoDB: Connected');
@@ -33,6 +41,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/api', verifyToken);
 app.use('/api/movies',movie);
 app.use('/api/directors',director);
 
