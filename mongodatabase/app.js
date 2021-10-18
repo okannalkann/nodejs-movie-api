@@ -24,7 +24,7 @@ const verifyToken = require('./middleware/verify-token');
 
 mongoose.connect('mongodb://localhost/movieApi');
 mongoose.connection.on('open', () => {
-    console.log('MongoDB: Connected');
+    //console.log('MongoDB: Connected');
 });
 mongoose.connection.on('error', (err) => {
     console.log('MongoDB: Error', err);
